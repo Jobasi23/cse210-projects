@@ -53,32 +53,35 @@ abstract class Goal(string name, string description, int points)
 }
 
 // Placeholder implementations for missing goal types
-class SimpleGoal : Goal
+class SimpleGoal(string name, string description, int points) : Goal(name, description, points)
 {
-    public SimpleGoal(string name, string description, int points) : base(name, description, points) { }
     public override int RecordEvent() => 0;
     public override string GetStatus() => "";
     public override string Serialize() => "";
 }
 
-class EternalGoal : Goal
+class EternalGoal(string name, string description, int points) : Goal(name, description, points)
 {
-    public EternalGoal(string name, string description, int points) : base(name, description, points) { }
     public override int RecordEvent() => 0;
     public override string GetStatus() => "";
     public override string Serialize() => "";
 }
 
-class ChecklistGoal : Goal
+class ChecklistGoal(string name, string description, int points, int targetCount, int bonus) : Goal(name, description, points)
 {
-    public int TargetCount { get; }
-    public int Bonus { get; }
-    public ChecklistGoal(string name, string description, int points, int targetCount, int bonus) : base(name, description, points)
+    public int TargetCount { get; } = targetCount;
+    public int Bonus { get; } = bonus;
+    public override int RecordEvent() => 0;
+    public override string GetStatus() => "";
+    public override string Serialize() => "";
+}
+
+// Entry point for the program
+class Program
+{
+    static void Main()
     {
-        TargetCount = targetCount;
-        Bonus = bonus;
+        Console.WriteLine("Eternal Quest program started.");
+        // You can add code here to test your classes if needed
     }
-    public override int RecordEvent() => 0;
-    public override string GetStatus() => "";
-    public override string Serialize() => "";
 }
